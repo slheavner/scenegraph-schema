@@ -1,4 +1,4 @@
-# SceneGraph Schema
+# SceneGraph Schema ![Node.js CI](https://github.com/slheavner/scenegraph-schema/workflows/Node.js%20CI/badge.svg)
 
 A schema generator for SceneGraph xml projects
 
