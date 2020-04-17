@@ -1,7 +1,6 @@
 import { Field, Component } from './component.types'
 import { Schema } from './schema'
 import { readFileSync } from 'fs'
-import * as axios from 'axios'
 import { join } from 'path'
 import { SchemaParser } from './parsers'
 
@@ -54,12 +53,7 @@ export async function fetchSchema(
 ): Promise<Schema> {
   let rawData: string
   if (!local) {
-    rawData = (
-      await axios.default.get(
-        'https://devtools.web.roku.com/schema/RokuSceneGraph.xsd',
-        { responseType: 'text' }
-      )
-    ).data
+    rawData = 'not implemented'
   } else {
     if (!localPath) {
       localPath = join(__dirname, '../../assets/RokuSceneGraph.xsd')
