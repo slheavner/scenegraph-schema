@@ -5,7 +5,7 @@ A schema generator for SceneGraph xml projects
 ## What you get from a schema
 
 - a project specific `.xsd` schema file
-- validation on scengraph component xml files
+- validation on scenegraph component xml files
 - `extends` completion, including base components
 - component tag completion, including components in `<children>` tag
 - `field` attribute completion
