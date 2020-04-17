@@ -1,0 +1,72 @@
+{
+  "name": "scenegraph-schema",
+  "version": "0.1.0",
+  "author": "Sam Heavner (slheavner)",
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run lint && tsc",
+    "start": "npm run ts-node",
+    "start:dev": "nodemon --exec npm run ts-node",
+    "start:dev:test": "nodemon --exec npm run ts-node:test",
+    "ts-node": "ts-node ./src/index.ts",
+    "prets-node:test": "npm test",
+    "ts-node:test": "npm run ts-node",
+    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'",
+    "pretest": "npm run lint",
+    "test": "jest",
+    "prepublish": "pkgfiles"
+  },
+  "main": "./dist/index.js",
+  "bin": {
+    "scenegraph-schema": "./dist/cli.js",
+    "sgschema": "./dist/cli.js"
+  },
+  "files": [
+    "dist/*",
+    "assets/*",
+    "LICENSE",
+    "CHANGELOG.md",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "devDependencies": {
+    "@types/chokidar": "^2.1.3",
+    "@types/glob": "^7.1.1",
+    "@types/jest": "^24.9.1",
+    "@types/lodash": "^4.14.149",
+    "@types/minimist": "^1.2.0",
+    "@types/node": "^10.17.15",
+    "@types/xml2js": "^0.4.5",
+    "@types/xml2json": "^0.11.0",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.4",
+    "pkgfiles": "^2.3.2",
+    "ts-jest": "^23.10.5",
+    "ts-node": "^8.6.2",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.5",
+    "typescript-tslint-plugin": "^0.3.1"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "notify": true,
+    "rootDir": "src/",
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$"
+  },
+  "dependencies": {
+    "chokidar": "^3.3.1",
+    "glob": "^7.1.6",
+    "minimist": "^1.2.0",
+    "xml2json": "^0.12.0"
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "xml.symbols.excluded": ["./assets/RokuSceneGraph.xsd"],
+  "editor.tabSize": 2
+}
