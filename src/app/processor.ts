@@ -1,15 +1,12 @@
 import { SchemaParser, ComponentParser } from './parsers'
 import { readFileSync, writeFileSync } from 'fs'
-import * as globCallback from 'glob'
-import { promisify } from 'util'
+import * as glob from 'globby'
 import * as path from 'path'
 import { Component } from './component.types'
 import * as chokidar from 'chokidar'
 import { Schema } from './schema'
 import { ScriptSchema, Attribute } from './schema.types'
 import { dedupe, BASE_NODE_SCHEMA, fslash, fetchSchema } from './utils'
-
-const glob = promisify(globCallback)
 
 export interface ProcessorOptions {
   scripts?: string[]
@@ -135,13 +132,8 @@ export class Processor {
 
   private async findComponents(): Promise<Component[]> {
     const { components } = this.options
-    const parsedComponents: string[][] = await this.all(components, async c => {
-      return glob(this.parseGlob(c))
-    })
-    const merged = dedupe(
-      parsedComponents.reduce((prev, next) => prev.concat(next), [])
-    )
-    const componentList = await this.all<string, Component>(merged, async f => {
+    const parsedComponents: string[] = await glob(components.map(c => this.parseGlob(c)))
+    const componentList = await this.all<string, Component>(parsedComponents, async f => {
       const xml = readFileSync(f)
       const c = await this.componentParser.parse(xml.toString())
       this.componentFileMap.set(f, c.component.name)
