@@ -67,7 +67,7 @@
   "dependencies": {
     "chokidar": "^3.3.1",
     "globby": "^11.0.0",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.6",
     "xml2json": "^0.12.0"
   }
 }
